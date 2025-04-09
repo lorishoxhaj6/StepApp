@@ -1,0 +1,100 @@
+{
+    "principiante": {
+    "petto": [
+        { "esercizio": "Push-Up", "serie": 3, "ripetizioni": 10 },
+        { "esercizio": "Croci su panca piana", "serie": 2, "ripetizioni": 12 },
+        { "esercizio": "Distensioni con manubri su panca inclinata", "serie": 3, "ripetizioni": 10 },
+        { "esercizio": "Chest Press su macchina", "serie": 3, "ripetizioni": 8 }
+    ],
+    "gambe": [
+        { "esercizio": "Squat a corpo libero", "serie": 3, "ripetizioni": 12 },
+        { "esercizio": "Affondi", "serie": 2, "ripetizioni": 10 },
+        { "esercizio": "Calf Raise", "serie": 3, "ripetizioni": 12 },
+        { "esercizio": "Leg Press con peso leggero", "serie": 3, "ripetizioni": 8 }
+    ],
+    "schiena": [
+        { "esercizio": "Superman", "serie": 2, "ripetizioni": 12 },
+        { "esercizio": "Rematore con elastico", "serie": 3, "ripetizioni": 10 },
+        { "esercizio": "Lat Machine (peso leggero)", "serie": 3, "ripetizioni": 8 },
+        { "esercizio": "Pullover con manubrio", "serie": 2, "ripetizioni": 10 }
+    ],
+    "spalle": [
+        { "esercizio": "Alzate laterali con manubri", "serie": 2, "ripetizioni": 12 },
+        { "esercizio": "Military Press con peso leggero", "serie": 3, "ripetizioni": 10 },
+        { "esercizio": "Alzate frontali con manubri", "serie": 2, "ripetizioni": 12 },
+        { "esercizio": "Scrollate con manubri", "serie": 3, "ripetizioni": 12 }
+    ],
+    "braccia": [
+        { "esercizio": "Curl con manubri", "serie": 3, "ripetizioni": 12 },
+        { "esercizio": "Estensioni tricipiti con elastico", "serie": 3, "ripetizioni": 10 },
+        { "esercizio": "Hammer Curl con manubri", "serie": 3, "ripetizioni": 12 },
+        { "esercizio": "Kickback per tricipiti", "serie": 2, "ripetizioni": 10 }
+    ]
+    },
+    "intermedio": {
+    "petto": [
+        { "esercizio": "Panca inclinata con manubri", "serie": 4, "ripetizioni": 10 },
+        { "esercizio": "Panca piana con bilanciere", "serie": 4, "ripetizioni": 8 },
+        { "esercizio": "Chest Press su macchina", "serie": 3, "ripetizioni": 10 },
+        { "esercizio": "Push-Up a difficoltà aumentata", "serie": 3, "ripetizioni": 15 }
+    ],
+    "gambe": [
+        { "esercizio": "Squat con bilanciere", "serie": 4, "ripetizioni": 8 },
+        { "esercizio": "Affondi laterali", "serie": 3, "ripetizioni": 10 },
+        { "esercizio": "Pressa per gambe", "serie": 4, "ripetizioni": 10 },
+        { "esercizio": "Leg Curl su macchina", "serie": 3, "ripetizioni": 12 }
+    ],
+    "schiena": [
+        { "esercizio": "Rematore con bilanciere", "serie": 4, "ripetizioni": 8 },
+        { "esercizio": "Lat Machine", "serie": 4, "ripetizioni": 10 },
+        { "esercizio": "Pull-Up assistiti", "serie": 3, "ripetizioni": 8 },
+        { "esercizio": "Pullover con manubri", "serie": 3, "ripetizioni": 10 }
+    ],
+    "spalle": [
+        { "esercizio": "Military Press con bilanciere", "serie": 4, "ripetizioni": 10 },
+        { "esercizio": "Alzate laterali con manubri", "serie": 4, "ripetizioni": 12 },
+        { "esercizio": "Alzate frontali con manubri", "serie": 3, "ripetizioni": 10 },
+        { "esercizio": "Scrollate con bilanciere", "serie": 4, "ripetizioni": 15 }
+    ],
+    "braccia": [
+        { "esercizio": "Curl con bilanciere", "serie": 3, "ripetizioni": 10 },
+        { "esercizio": "French Press con bilanciere", "serie": 3, "ripetizioni": 8 },
+        { "esercizio": "Hammer Curl alternati", "serie": 4, "ripetizioni": 12 },
+        { "esercizio": "Dips su panca", "serie": 3, "ripetizioni": 12 }
+    ]
+    },
+    "avanzato": {
+    "petto": [
+        { "esercizio": "Panca piana con bilanciere", "serie": 5, "ripetizioni": 6 },
+        { "esercizio": "Panca inclinata con bilanciere", "serie": 4, "ripetizioni": 6 },
+        { "esercizio": "Croci ai cavi", "serie": 3, "ripetizioni": 12 },
+        { "esercizio": "Push-Up con peso sulla schiena", "serie": 4, "ripetizioni": 15 }
+    ],
+    "gambe": [
+        { "esercizio": "Squat con bilanciere pesante", "serie": 5, "ripetizioni": 8 },
+        { "esercizio": "Pressa per gambe pesante", "serie": 5, "ripetizioni": 8 },
+        { "esercizio": "Stacchi da terra", "serie": 5, "ripetizioni": 6 },
+        { "esercizio": "Affondi camminati", "serie": 4, "ripetizioni": 10 }
+    ],
+    "schiena": [
+        { "esercizio": "Pull-Up", "serie": 5, "ripetizioni": 8 },
+        { "esercizio": "Rematore con bilanciere pesante", "serie": 4, "ripetizioni": 8 },
+        { "esercizio": "T-Bar Row", "serie": 4, "ripetizioni": 10 },
+        { "esercizio": "Pullover con bilanciere", "serie": 3, "ripetizioni": 12 }
+    ],
+    "spalle": [
+        { "esercizio": "Military Press pesante", "serie": 5, "ripetizioni": 6 },
+        { "esercizio": "Alzate laterali ai cavi", "serie": 4, "ripetizioni": 12 },
+        { "esercizio": "Alzate frontali con bilanciere", "serie": 4, "ripetizioni": 10 },
+        { "esercizio": "Scrollate con bilanciere pesante", "serie": 5, "ripetizioni": 15 }
+    ],
+    "braccia": [
+        { "esercizio": "Curl con bilanciere pesante", "serie": 4, "ripetizioni": 8 },
+        { "esercizio": "French Press pesante", "serie": 4, "ripetizioni": 6 },
+        { "esercizio": "Hammer Curl con manubri pesanti", "serie": 4, "ripetizioni": 8 },
+        { "esercizio": "Dips alla parallela", "serie": 4, "ripetizioni": 10 }
+    ]
+    }
+}
+
+  
