@@ -44,6 +44,7 @@ function Schede() {
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center  text-gray-800">
+      <h1 className="font-bold font-sans text-gray-900 justify-center m-5 text-4xl">Genera Schede</h1>
       {/* Sezione per le difficoltà */}
       <div className="grid grid-cols-3 justify-center items-center mb-5 mt-5 gap-10 min-w-9/12">
         <Card

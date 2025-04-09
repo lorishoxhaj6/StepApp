@@ -17,9 +17,11 @@ const Card = ({ icon, title1, isSelected, onClick }: CardProps) => {
   }
 
   return (
+    
+    
     <div
-      className={`relative rounded-3xl w-full max-w-sm mx-auto overflow-hidden transition-all duration-300 ease-in-out transform ${
-        isSelected ? "scale-105 shadow-xl" : "hover:scale-105 hover:shadow-2xl"
+      className={`relative rounded-3xl w-full max-w-sm mx-auto overflow-hidden transition-all duration-350 ease-in-out  ${
+        isSelected ? "scale-105 shadow-xs border-2 border-blue-600" : "hover:scale-105 hover:shadow-2xl"
       }`}
       onClick={onClick}
       style={{
@@ -34,9 +36,10 @@ const Card = ({ icon, title1, isSelected, onClick }: CardProps) => {
       {/* Contenuto sopra */}
       <div className="relative z-10 text-white p-6 flex flex-col justify-start h-full"> {/* Allinea in alto */}
         <h2 className="text-3xl font-bold leading-tight">{title1}</h2>
-        <div className="mt-20"/>
+        <div className="mt-14"/>
       </div>
     </div>
+
   );
 };
 
