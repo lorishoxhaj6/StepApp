@@ -1,33 +1,42 @@
-import { JSX } from "react";
+import { JSX, isValidElement } from "react";
 
 type CardProps = {
-  icon: JSX.Element;
+  icon: JSX.Element; // immagine JSX
   title1: string;
-  title2: string;
-  isSelected?: boolean; // Indica se la card è selezionata
-  onClick?: () => void; // Funzione al clic
+  isSelected?: boolean;
+  onClick?: () => void;
 };
 
-const Card = ({ icon, title1, title2, isSelected, onClick }: CardProps) => {
+const Card = ({ icon, title1, isSelected, onClick }: CardProps) => {
+  // Estrai lo src se l'elemento icon è <img>
+  let bgImageUrl: string | undefined;
+
+  if (isValidElement(icon) && icon.type === "img") {
+    const props = icon.props as { src?: string };
+    bgImageUrl = props.src;
+  }
+
   return (
     <div
-      className={`bg-black/90 text-white p-6 rounded-3xl w-full max-w-sm mx-auto relative overflow-hidden transition-all duration-300 ease-in-out transform ${
-        isSelected
-          ? "bg-white text-black shadow-xl scale-105" // Quando la card è selezionata
-          : "hover:bg-white hover:text-black hover:shadow-lg hover:scale-105"
+      className={`relative rounded-3xl w-full max-w-sm mx-auto overflow-hidden transition-all duration-300 ease-in-out transform ${
+        isSelected ? "scale-105 shadow-xl" : "hover:scale-105 hover:shadow-2xl"
       }`}
       onClick={onClick}
+      style={{
+        backgroundImage: bgImageUrl ? `url(${bgImageUrl})` : undefined,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
     >
-      <div className="mb-4">
-        <h2 className={`text-2xl font-bold leading-tight ${isSelected && "text-black"}`}>
-          {title1},<br />{title2}
-        </h2>
-      </div>
+      {/* Overlay stile Apple */}
+      <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px] z-0" />
 
-      <div className="relative rounded-[30px] p-[2px]">
-        <div className="bg-amber-300 rounded-[28px] overflow-hidden">
-          {icon}
-        </div>
+      {/* Contenuto sopra */}
+      <div className="relative z-10 text-white p-6 flex flex-col justify-start h-full"> {/* Allinea in alto */}
+        <h2 className="text-3xl font-bold leading-tight">{title1}</h2>
+        <br/>
+        <br/>
+        <br/>
       </div>
     </div>
   );
