@@ -28,15 +28,13 @@ const Card = ({ icon, title1, isSelected, onClick }: CardProps) => {
         backgroundPosition: "center",
       }}
     >
-      {/* Overlay stile Apple */}
+      {/* Overlay stile  */}
       <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px] z-0" />
 
       {/* Contenuto sopra */}
       <div className="relative z-10 text-white p-6 flex flex-col justify-start h-full"> {/* Allinea in alto */}
         <h2 className="text-3xl font-bold leading-tight">{title1}</h2>
-        <br/>
-        <br/>
-        <br/>
+        <div className="mt-20"/>
       </div>
     </div>
   );
