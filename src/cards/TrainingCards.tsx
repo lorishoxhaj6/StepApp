@@ -112,20 +112,20 @@ function Schede() {
         <Card
           icon={<img src={principiante} alt="Principiante" />}
           title1="Principiante"
-          isSelected={selectedLevel === "Principiante"}
-          onClick={() => handleLevelSelect("Principiante")}
+          isSelected={selectedLevel === "principiante"}
+          onClick={() => handleLevelSelect("principiante")}
         />
         <Card
           icon={<img src={intermedio} alt="Intermedio" />}
           title1="Intermedio"
-          isSelected={selectedLevel === "Intermedio"}
-          onClick={() => handleLevelSelect("Intermedio")}
+          isSelected={selectedLevel === "intermedio"}
+          onClick={() => handleLevelSelect("intermedio")}
         />
         <Card
           icon={<img src={avanzato} alt="Avanzato" />}
           title1="Avanzato"
-          isSelected={selectedLevel === "Avanzato"}
-          onClick={() => handleLevelSelect("Avanzato")}
+          isSelected={selectedLevel === "avanzato"}
+          onClick={() => handleLevelSelect("avanzato")}
         />
       </div>
 
@@ -134,32 +134,32 @@ function Schede() {
         <Card
           icon={<img src={schiena} alt="Schiena" />}
           title1="Schiena"
-          isSelected={selectedZone === "Schiena"}
+          isSelected={selectedZone === "schiena"}
           onClick={() => handleZoneSelect("Schiena")}
         />
         <Card
           icon={<img src={petto} alt="Petto" />}
           title1="Petto"
-          isSelected={selectedZone === "Petto"}
-          onClick={() => handleZoneSelect("Petto")}
+          isSelected={selectedZone === "petto"}
+          onClick={() => handleZoneSelect("petto")}
         />
         <Card
           icon={<img src={gambe} alt="Gambe" />}
           title1="Gambe"
-          isSelected={selectedZone === "Gambe"}
-          onClick={() => handleZoneSelect("Gambe")}
+          isSelected={selectedZone === "gambe"}
+          onClick={() => handleZoneSelect("gambe")}
         />
         <Card
           icon={<img src={spalle} alt="Spalle" />}
           title1="Spalle"
-          isSelected={selectedZone === "Spalle"}
-          onClick={() => handleZoneSelect("Spalle")}
+          isSelected={selectedZone === "spalle"}
+          onClick={() => handleZoneSelect("spalle")}
         />
         <Card
           icon={<img src={bicipite} alt="bicipite" />}
           title1="Braccia"
-          isSelected={selectedZone === "Braccia"}
-          onClick={() => handleZoneSelect("Braccia")}
+          isSelected={selectedZone === "braccia"}
+          onClick={() => handleZoneSelect("braccia")}
         />
       </div>
 
