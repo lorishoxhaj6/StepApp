@@ -43,9 +43,9 @@ function Schede() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center mt-5 text-gray-800">
+    <div className="min-h-screen flex flex-col justify-center items-center  text-gray-800">
       {/* Sezione per le difficoltà */}
-      <div className="flex justify-center  mb-5 mt-8 w-full">
+      <div className="flex justify-center  mb-5 mt-5 w-full">
         <Card
           icon={<img src={principiante} alt="Principiante" />}
           title1="Principiante"

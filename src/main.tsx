@@ -17,7 +17,7 @@ createRoot(document.getElementById('root')!).render(
         {/*Sidebar sempre visibile*/}
       <Navbar/>
          {/*Contenuto cambia in base alla rotta*/}
-        <div className="flex-1 overflow-y-auto bg-gray-100 transition-all duration-300 ease-in-out">
+        <div className="flex-1 overflow-y-auto bg-[#F5F5F7] transition-all duration-300 ease-in-out">
           <Routes>
             <Route path="/" element={<Steps/>}/>
             <Route path="/dashboard" element={<Dashboard/>}/>
