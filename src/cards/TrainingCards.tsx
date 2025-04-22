@@ -106,23 +106,23 @@ function Schede() {
   
   return (
     <div className="min-h-screen flex flex-col justify-center items-center  text-gray-800">
-      <h1 className="font-bold font-sans text-gray-900 justify-center m-5 text-4xl">Genera Schede</h1>
+      <h1 className="font-bold font-serif text-gray-900 justify-center mb-10 text-5xl">Generatore di Schede</h1>
       {/* Sezione per le difficoltà */}
-      <div className="grid grid-cols-3 justify-center items-center mb-5 mt-5 gap-10 min-w-9/12">
+      <div className="flex justify-around w-full m-5">
         <Card
-          icon={<img src={principiante} alt="Principiante" />}
+          icon={<img src={principiante} alt="Principiante" loading="eager" />}
           title1="Principiante"
           isSelected={selectedLevel === "principiante"}
           onClick={() => handleLevelSelect("principiante")}
         />
         <Card
-          icon={<img src={intermedio} alt="Intermedio" />}
+          icon={<img src={intermedio} alt="Intermedio" loading="eager" />}
           title1="Intermedio"
           isSelected={selectedLevel === "intermedio"}
           onClick={() => handleLevelSelect("intermedio")}
         />
         <Card
-          icon={<img src={avanzato} alt="Avanzato" />}
+          icon={<img src={avanzato} alt="Avanzato" loading="eager"/>}
           title1="Avanzato"
           isSelected={selectedLevel === "avanzato"}
           onClick={() => handleLevelSelect("avanzato")}
@@ -130,33 +130,35 @@ function Schede() {
       </div>
 
       {/* Sezione per le zone del corpo */}
-      <div className="flex flex-wrap justify-center gap-10 mt-5 mb-5 ">
+      <div className="flex justify-arownd w-full m-5">
         <Card
-          icon={<img src={schiena} alt="Schiena" />}
+          icon={<img src={schiena} alt="Schiena" loading="eager"/>}
           title1="Schiena"
           isSelected={selectedZone === "schiena"}
           onClick={() => handleZoneSelect("Schiena")}
         />
         <Card
-          icon={<img src={petto} alt="Petto" />}
+          icon={<img src={petto} alt="Petto" loading="eager"/>}
           title1="Petto"
           isSelected={selectedZone === "petto"}
           onClick={() => handleZoneSelect("petto")}
         />
         <Card
-          icon={<img src={gambe} alt="Gambe" />}
+          icon={<img src={gambe} alt="Gambe" loading="eager" />}
           title1="Gambe"
           isSelected={selectedZone === "gambe"}
           onClick={() => handleZoneSelect("gambe")}
         />
+      </div>
+      <div className="flex justify-arownd w-full m-5">
         <Card
-          icon={<img src={spalle} alt="Spalle" />}
+          icon={<img src={spalle} alt="Spalle" loading="eager" />}
           title1="Spalle"
           isSelected={selectedZone === "spalle"}
           onClick={() => handleZoneSelect("spalle")}
         />
         <Card
-          icon={<img src={bicipite} alt="bicipite" />}
+          icon={<img src={bicipite} alt="bicipite" loading="eager"/>}
           title1="Braccia"
           isSelected={selectedZone === "braccia"}
           onClick={() => handleZoneSelect("braccia")}
@@ -164,10 +166,10 @@ function Schede() {
       </div>
 
       {/* Bottone per inviare la selezione */}
-      <div className="flex justify-center items-center  mt-5 mb-5">
+      <div className="grid grid-cols-1 justify-center items-center  mt-5 mb-5 min-w-2.5">
         <button
           onClick={handleSubmit}
-          className="px-8 py-3 bg-black text-white font-medium rounded-full shadow-xl hover:bg-gray-900 transition-all duration-300 hover:scale-105"
+          className="px-10 py-3 bg-black text-white font-medium rounded-full shadow-xl hover:bg-gray-950 transition-all duration-300 scale-105 hover:scale-110"
         >
           Conferma Selezione
         </button>

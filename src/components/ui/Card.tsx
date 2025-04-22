@@ -1,15 +1,27 @@
+import React from "react";
 
-export default function Card(){
+type CardProps = {
+  info1: React.ReactElement;
+  info2: React.ReactElement;
+  image1: React.ReactElement;
+  image2: React.ReactElement;
+};
 
-    return(
-      <div className="max-w-sm  p-2 rounded-3xl overflow-hidden shadow-xl">
-        <div className="px-6 py-8">
-          <div className="font-bold text-4xl mb-2">7.534</div>
-            <p className="text-gray-700 text-xl ">
-            today
-            </p>
-          </div>
+export default function Card({ info1, info2, image1, image2 }: CardProps) {
+  return (
+    <div className="w-full p-6 bg-white rounded-3xl shadow-xl">
+      <div className="flex flex-col gap-6">
+        {/* Riga 1 */}
+        <div className="flex items-center gap-4">
+          {image1}
+          {info1}
+        </div>
+        {/* Riga 2 */}
+        <div className="flex items-center gap-4">
+          {image2}
+          {info2}
+        </div>
       </div>
-    );
-
-} 
+    </div>
+  );
+}
