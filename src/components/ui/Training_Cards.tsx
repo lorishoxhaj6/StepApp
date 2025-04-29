@@ -1,5 +1,5 @@
 import { JSX, isValidElement } from "react";
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 type CardProps = {
   icon: JSX.Element;
@@ -18,28 +18,33 @@ const Card = ({ icon, title1, isSelected, onClick }: CardProps) => {
 
   return (
     <motion.div
-      className={`relative rounded-3xl w-full max-w-sm mx-auto overflow-hidden cursor-pointer
-        transform transition-transform duration-500 ease-in-out
-        ${isSelected ? "scale-105 shadow-2xs border-2 border-blue-600" : "hover:scale-105 hover:shadow-xl"}
+      layout
+      className={`
+        relative rounded-3xl w-full max-w-sm mx-auto overflow-hidden cursor-pointer  hover:scale-110 transition-all ease-in-out
+        ${isSelected ? "border-2 border-blue-600" : ""}
       `}
       onClick={onClick}
+      initial={{ opacity: 0, scale: 0.98 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      transition={{
+        duration: 0.4,
+        ease: [0.4, 0, 0.2, 0.6],
+        delay: 0.4,
+      }}
       style={{
         backgroundImage: bgImageUrl ? `url(${bgImageUrl})` : undefined,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        willChange: "transform",
-      }}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0}}
-      transition={{
-        duration: 0.4,
-        ease: [0.4, 0, 0.2, 0.6],
-        delay: 0.4, // entra leggermente dopo la pagina
+        willChange: "transform, opacity",
       }}
     >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/30 backdrop-blur-[1.5px] z-0 transition-all duration-500 ease-in-out" />
+      {/* Overlay animato separatamente */}
+      <motion.div
+        layout
+        className="absolute inset-0 bg-black/30 backdrop-blur-[1.5px] z-0"
+        transition={{ duration: 0.4 }}
+      />
 
       {/* Contenuto */}
       <div className="relative z-10 text-white p-6 flex flex-col justify-start h-full">

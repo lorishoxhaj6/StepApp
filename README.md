@@ -51,4 +51,7 @@ export default tseslint.config({
     ...reactDom.configs.recommended.rules,
   },
 })
+/*install framer-motion
+  install recharts
+  install papaparse -> per importare file csv (excel)*/
 ```
