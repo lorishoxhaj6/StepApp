@@ -13,12 +13,12 @@ function Navbar() {
 		<>
 			{/* Bottone hamburger visibile solo su mobile */}
 			<div className="sm:hidden fixed top-4 left-4 z-50">
-				<button
+				<div
 					onClick={toggleSidebar}
 					className="p-2 rounded-md bg-white shadow-md border border-gray-200"
 				>
 					<SidebarButton />
-				</button>
+				</div>
 			</div>
 
 			{/* Sidebar */}

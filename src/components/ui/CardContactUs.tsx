@@ -9,7 +9,7 @@ type CardProps = {
 
 export default function Card({ info1, info2, image1, image2 }: CardProps) {
   return (
-    <div className="w-full p-6 bg-white rounded-3xl shadow-xl">
+    <div className="w-3xl p-6 bg-white rounded-3xl shadow-xl">
       <div className="flex flex-col gap-6">
         {/* Riga 1 */}
         <div className="flex items-center gap-4">

@@ -53,5 +53,7 @@ export default tseslint.config({
 })
 /*install framer-motion
   install recharts
-  install papaparse -> per importare file csv (excel)*/
+  install papaparse -> per importare file csv (excel)
+  yseFetch.tsx -> npm i --save-dev @types/papaparse
+  */
 ```
