@@ -2,7 +2,6 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import Navbar from './components/Navbar'
-import Steps from './cards/Steps'
 import Analytics from './cards/Analytics'
 import TrainingCards from "./cards/TrainingCards"
 import Contacts from "./cards/Contacts"
@@ -17,8 +16,7 @@ function AnimatedRoutes() {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<AnimatedPage><Steps /></AnimatedPage>} />
-        <Route path="/dashboard" element={<AnimatedPage><Dashboard /></AnimatedPage>} />
+        <Route path="/" element={<AnimatedPage><Dashboard /></AnimatedPage>} />
         <Route path="/training-cards" element={<AnimatedPage><TrainingCards /></AnimatedPage>} />
         <Route path="/analytics" element={<AnimatedPage><Analytics /></AnimatedPage>} />
         <Route path="/contact-us" element={<AnimatedPage><Contacts /></AnimatedPage>} />
