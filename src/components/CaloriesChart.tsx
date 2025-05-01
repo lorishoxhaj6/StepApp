@@ -8,12 +8,11 @@ export default function CaloriePieChart() {
 	const { fetchCsvData } = useFetch();
 
 	useEffect(() => {
-		fetchCsvData("src/data/data.csv", setData);
+		fetchCsvData("/data.csv", setData);
 	}, []);
 
-	console.log(data);
-
+	console.log(data)
 	return (
-   <div></div>
+		<></>
 	);
-}
+};

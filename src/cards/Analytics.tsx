@@ -1,3 +1,4 @@
+import CaloriesChart from "@/components/CaloriesChart"
 
 
 function Analytics() {
@@ -9,6 +10,7 @@ function Analytics() {
         <p className="mt-4 text-lg text-gray-700">
           Questo è il contenuto della tua Analytics, affiancato alla sidebar.
         </p>
+        <CaloriesChart></CaloriesChart>
       </div>
       
     )

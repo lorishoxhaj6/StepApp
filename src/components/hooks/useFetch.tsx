@@ -10,7 +10,8 @@ const useFetch = () => {
 		const csvString = decoder.decode(result.value!);
 		const { data } = Papa.parse(csvString, {
             header: true,
-            dynamicTyping: true
+            dynamicTyping: true,
+			
         })
         callback(data)
 	};
