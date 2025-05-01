@@ -1,15 +1,57 @@
 import { FormEvent, useEffect, useRef, useState } from "react";
+import axios from "axios";
+import Papa from "papaparse";
+
+interface RowData {
+  time?: string;
+  steps?: string;
+  distance?: string;
+  calories?: string;
+}
 
 function Dashboard() {
+  const [data, setData] = useState<RowData[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
   const numberInputRef = useRef<HTMLInputElement>(null);
   const [isSelect, setSelect] = useState<boolean>(false);
   const [goal, setGoal] = useState<string | null>(localStorage.getItem("goal") || null);
 
   useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+
+      try {
+        const response = await axios.get('/data.csv', {
+          responseType: 'text',
+        });
+
+        Papa.parse<RowData>(response.data, {
+          header: true,
+          worker: true,
+          skipEmptyLines: true,
+          complete: (results) => {
+            setData(results.data);
+            setLoading(false);
+          },
+          error: () => {
+            setLoading(false);
+          },
+        });
+      } catch (e: any) {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
     setGoal(localStorage.getItem("goal"));
   }, []);
 
-  function data(e: FormEvent) {
+ 
+  if (loading) {
+    return <div>Caricamento dati CSV...</div>;
+  }
+
+  function handlerSumit(e: FormEvent) {
     e.preventDefault();
     if (numberInputRef.current) {
       setSelect(false);
@@ -24,11 +66,10 @@ function Dashboard() {
 
   return (
     <div className="flex min-h-screen bg-[#f5f5f7] p-8 flex flex-col items-left">
-
       <div className="w-full max-w-sm">
         {!localStorage.getItem("goal") || isSelect ? (
           <form
-            onSubmit={data}
+            onSubmit={handlerSumit}
             className="bg-white rounded-2xl shadow-sm p-6 space-y-6 border border-gray-200"
           >
             <div className="space-y-2">

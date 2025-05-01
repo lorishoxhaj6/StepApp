@@ -1,4 +1,4 @@
-import { StrictMode } from 'react'
+//import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import Navbar from './components/Navbar'
@@ -26,7 +26,7 @@ function AnimatedRoutes() {
 }
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+  //<StrictMode>
     <Router>
       <div className='flex h-screen'>
       <Navbar />
@@ -35,5 +35,5 @@ createRoot(document.getElementById('root')!).render(
         </div>
       </div>
     </Router>
-  </StrictMode>
+ // </StrictMode>
 )
