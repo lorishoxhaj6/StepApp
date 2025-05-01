@@ -1,8 +1,9 @@
 import { FormEvent, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import Papa from "papaparse";
+import StepsChart from "../components/StepsChart";
 
-interface RowData {
+export interface RowData {
   time?: string;
   steps?: string;
   distance?: string;
@@ -65,7 +66,7 @@ function Dashboard() {
   }
 
   return (
-    <div className="flex min-h-screen bg-[#f5f5f7] p-8 flex flex-col items-left">
+    <div className="min-h-screen bg-[#f5f5f7] p-8 flex flex-col items-left">
       <div className="w-full max-w-sm">
         {!localStorage.getItem("goal") || isSelect ? (
           <form
@@ -78,11 +79,10 @@ function Dashboard() {
               </label>
               <input
                 type="number"
-                id="a"
-                name="a"
+                min="1"
                 defaultValue={goal || ""}
                 ref={numberInputRef}
-                placeholder="Es. 10000 passi"
+                placeholder="Steps"
                 className="w-full bg-[#f2f2f7] px-4 py-3 rounded-xl border border-gray-300 text-gray-800 placeholder-gray-400 focus:ring-2 focus:ring-black focus:outline-none transition"
               />
             </div>
@@ -109,6 +109,7 @@ function Dashboard() {
           </div>
         )}
       </div>
+      <StepsChart data={data}/>
     </div>
   );
 }

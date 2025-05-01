@@ -6,7 +6,7 @@ function TimeBar() {
 				{timeSpaces.map((time, index) => (
 					<button
 						key={index}
-						className="flex-1/4 p-3 font-extralight hover:bg-blue-300 rounded-2xl transition-all ease-in-out"
+						className="flex-1/4 p-3 font-extralight hover:bg-gray-200 rounded-2xl transition-all ease-in-out"
 					>
 						{time}
 					</button>

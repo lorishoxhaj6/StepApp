@@ -49,7 +49,7 @@ function Analytics() {
     }, []);
   
     if (loading) {
-      return <div>Caricamento dati CSV...</div>;
+      return <div className="items-center font-bold text-3xl">Caricamento...</div>;
     }
 
 
