@@ -52,10 +52,11 @@ function Analytics() {
       return <div className="items-center font-bold text-3xl">Caricamento...</div>;
     }
 
-
+    console.log(data);
   return (
     <div className="flex-1 p-8 bg-gray-100">
       <h1 className="text-4xl font-bold text-gray-800">Analytics</h1>
+
     </div>
   );
 }

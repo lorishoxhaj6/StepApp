@@ -3,11 +3,12 @@ import axios from "axios";
 import Papa from "papaparse";
 import StepsChart from "../components/StepsChart";
 
+
 export interface RowData {
-  time?: string;
-  steps?: string;
-  distance?: string;
-  calories?: string;
+  time?: Date;
+  steps?: number;
+  distance?: number;
+  calories?: number;
 }
 
 function Dashboard() {
@@ -26,12 +27,19 @@ function Dashboard() {
           responseType: 'text',
         });
 
-        Papa.parse<RowData>(response.data, {
+        Papa.parse(response.data, {
           header: true,
           worker: true,
           skipEmptyLines: true,
           complete: (results) => {
-            setData(results.data);
+            const processData:RowData[] = results.data.map((row:any) => {
+                return {
+                  ...row,
+                  time : new Date(parseInt(row.time,10)*1000)
+                  
+                }
+            })
+            setData(ordineDate(processData));
             setLoading(false);
           },
           error: () => {
@@ -50,6 +58,34 @@ function Dashboard() {
  
   if (loading) {
     return <div>Caricamento dati CSV...</div>;
+  } 
+
+
+  function ordineDate(data : RowData[]) : RowData[] {
+    const dataOrdinata = [...data];
+
+
+    dataOrdinata.sort( (a,b) => {
+
+      const dateA = a.time;
+      const dateB = b.time;
+  
+      // Gestisci i casi in cui 'time' è undefined
+      if (!dateA && !dateB) {
+        return 0; // Entrambi undefined, mantieni l'ordine
+      }
+      if (!dateA) {
+        return -1; // a è undefined, viene prima (o dopo, a seconda della logica desiderata)
+      }
+      if (!dateB) {
+        return 1; // b è undefined, viene dopo (o prima, a seconda della logica desiderata)
+      }
+
+      return dateA.getTime() - dateB.getTime();
+  
+    })
+
+    return dataOrdinata;
   }
 
   function handlerSumit(e: FormEvent) {
@@ -66,8 +102,10 @@ function Dashboard() {
   }
 
   return (
+    
     <div className="min-h-screen bg-[#f5f5f7] p-8 flex flex-col items-left">
       <div className="w-full max-w-sm">
+        
         {!localStorage.getItem("goal") || isSelect ? (
           <form
             onSubmit={handlerSumit}
@@ -108,6 +146,7 @@ function Dashboard() {
             </button>
           </div>
         )}
+          
       </div>
       <StepsChart data={data}/>
     </div>
