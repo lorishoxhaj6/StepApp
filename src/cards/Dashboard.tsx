@@ -2,7 +2,7 @@ import { FormEvent, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import Papa from "papaparse";
 import StepsChart from "../components/StepsChart";
-
+import { motion } from "framer-motion";
 
 export interface RowData {
   time?: Date;
@@ -36,7 +36,7 @@ function Dashboard() {
                 return {
                   ...row,
                   time : new Date(parseInt(row.time,10)*1000)
-                  
+                  	
                 }
             })
             setData(ordineDate(processData));
@@ -55,35 +55,26 @@ function Dashboard() {
     setGoal(localStorage.getItem("goal"));
   }, []);
 
- 
-  if (loading) {
-    return <div>Caricamento dati CSV...</div>;
-  } 
-
+  
 
   function ordineDate(data : RowData[]) : RowData[] {
     const dataOrdinata = [...data];
-
-
-    dataOrdinata.sort( (a,b) => {
-
+    dataOrdinata.sort((a, b) => {
       const dateA = a.time;
       const dateB = b.time;
-  
-      // Gestisci i casi in cui 'time' è undefined
+
       if (!dateA && !dateB) {
-        return 0; // Entrambi undefined, mantieni l'ordine
+        return 0;
       }
       if (!dateA) {
-        return -1; // a è undefined, viene prima (o dopo, a seconda della logica desiderata)
+        return -1;
       }
       if (!dateB) {
-        return 1; // b è undefined, viene dopo (o prima, a seconda della logica desiderata)
+        return 1;
       }
 
       return dateA.getTime() - dateB.getTime();
-  
-    })
+    });
 
     return dataOrdinata;
   }
@@ -93,7 +84,7 @@ function Dashboard() {
     if (numberInputRef.current) {
       setSelect(false);
       localStorage.setItem("goal", numberInputRef.current.value);
-      window.location.reload(); // Ricarica per aggiornare visivamente
+      window.location.reload();
     }
   }
 
@@ -102,10 +93,17 @@ function Dashboard() {
   }
 
   return (
-    
-    <div className="min-h-screen bg-[#f5f5f7] p-8 flex flex-col items-left">
+    <motion.div
+      className="min-h-screen bg-[#f5f5f7] p-8 flex flex-col items-left"
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      transition={{
+        duration: 0.6,
+        ease: [0.4, 0, 0.2, 1],
+      }}
+    >
       <div className="w-full max-w-sm">
-        
         {!localStorage.getItem("goal") || isSelect ? (
           <form
             onSubmit={handlerSumit}
@@ -146,10 +144,9 @@ function Dashboard() {
             </button>
           </div>
         )}
-          
       </div>
-      <StepsChart data={data}/>
-    </div>
+      <StepsChart data={data} />
+    </motion.div>
   );
 }
 

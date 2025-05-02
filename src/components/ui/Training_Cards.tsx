@@ -36,7 +36,6 @@ const Card = ({ icon, title1, isSelected, onClick }: CardProps) => {
         backgroundImage: bgImageUrl ? `url(${bgImageUrl})` : undefined,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        willChange: "transform, opacity",
       }}
     >
       {/* Overlay animato separatamente */}

@@ -110,19 +110,19 @@ function Schede() {
       {/* Sezione per le difficoltà */}
       <div className="flex justify-around w-full m-5">
         <Card
-          icon={<img src={principiante} alt="Principiante" loading="eager" />}
+          icon={<img src={principiante} alt="Principiante" loading="lazy" />}
           title1="Principiante"
           isSelected={selectedLevel === "principiante"}
           onClick={() => handleLevelSelect("principiante")}
         />
         <Card
-          icon={<img src={intermedio} alt="Intermedio" loading="eager" />}
+          icon={<img src={intermedio} alt="Intermedio" loading="lazy" />}
           title1="Intermedio"
           isSelected={selectedLevel === "intermedio"}
           onClick={() => handleLevelSelect("intermedio")}
         />
         <Card
-          icon={<img src={avanzato} alt="Avanzato" loading="eager"/>}
+          icon={<img src={avanzato} alt="Avanzato" loading="lazy"/>}
           title1="Avanzato"
           isSelected={selectedLevel === "avanzato"}
           onClick={() => handleLevelSelect("avanzato")}
@@ -132,19 +132,19 @@ function Schede() {
       {/* Sezione per le zone del corpo */}
       <div className="flex justify-arownd w-full m-5">
         <Card
-          icon={<img src={schiena} alt="Schiena" loading="eager"/>}
+          icon={<img src={schiena} alt="Schiena" loading="lazy"/>}
           title1="Schiena"
           isSelected={selectedZone === "schiena"}
           onClick={() => handleZoneSelect("Schiena")}
         />
         <Card
-          icon={<img src={petto} alt="Petto" loading="eager"/>}
+          icon={<img src={petto} alt="Petto" loading="lazy"/>}
           title1="Petto"
           isSelected={selectedZone === "petto"}
           onClick={() => handleZoneSelect("petto")}
         />
         <Card
-          icon={<img src={gambe} alt="Gambe" loading="eager" />}
+          icon={<img src={gambe} alt="Gambe" loading="lazy" />}
           title1="Gambe"
           isSelected={selectedZone === "gambe"}
           onClick={() => handleZoneSelect("gambe")}
@@ -152,13 +152,13 @@ function Schede() {
       </div>
       <div className="flex justify-arownd w-full m-5">
         <Card
-          icon={<img src={spalle} alt="Spalle" loading="eager" />}
+          icon={<img src={spalle} alt="Spalle" loading="lazy" />}
           title1="Spalle"
           isSelected={selectedZone === "spalle"}
           onClick={() => handleZoneSelect("spalle")}
         />
         <Card
-          icon={<img src={bicipite} alt="bicipite" loading="eager"/>}
+          icon={<img src={bicipite} alt="bicipite" loading="lazy"/>}
           title1="Braccia"
           isSelected={selectedZone === "braccia"}
           onClick={() => handleZoneSelect("braccia")}
