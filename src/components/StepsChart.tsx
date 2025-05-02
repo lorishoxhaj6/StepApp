@@ -1,160 +1,168 @@
 import {
-    BarChart,
-    Bar,
-    XAxis,
-    YAxis,
-    Tooltip,
-    ResponsiveContainer,
-    CartesianGrid,
-    Legend
+	BarChart,
+	Bar,
+	XAxis,
+	YAxis,
+	Tooltip,
+	ResponsiveContainer,
+	CartesianGrid,
+	Legend,
 } from "recharts";
 import { RowData } from "../cards/Dashboard";
-import {  useEffect, useState } from "react"; // Importa useState
-import { format } from 'date-fns';
-import { it } from 'date-fns/locale';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css'
-
-
+import { useEffect, useState } from "react";
+import { format, isSameDay, isSameWeek, isSameMonth, parseISO } from "date-fns";
+import { it } from "date-fns/locale";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 interface props {
-    data: RowData[];
+	data: RowData[];
 }
 
 interface SommeGiornaliere {
-    [key: string]: { calorie: number; distanza: number; passi: number };
+	[key: string]: { calorie: number; distanza: number; passi: number };
 }
 
-interface Grafico  {
-	data : string,
-	calorie: number,
-	distanza: number,
-	passi: number
-}	
-
+interface Grafico {
+	data: string;
+	calorie: number;
+	distanza: number;
+	passi: number;
+}
 
 export default function StepsChart({ data }: props) {
-    const [sommeGiornaliereArray, setSommeGiornaliereArray] = useState<Grafico[]>([]);
-	const [dataFiltrata,setDataFiltrata] = useState<Grafico[]>([]);
-	const [visualizzazione,setVisualizazzione]  = useState<string>();
-	const [dataSelezionata, setDataSelezionata] = useState<Date>(); // O Date | null
+	const [sommeGiornaliereArray, setSommeGiornaliereArray] = useState<Grafico[]>([]);
+	const [dataFiltrata, setDataFiltrata] = useState<Grafico[]>([]);
+	const [visualizzazione, setVisualizazzione] = useState<string>("mese");
+	const [dataSelezionata, setDataSelezionata] = useState<Date>(new Date());
 
+	useEffect(() => {
+		const sommePerGiorno: SommeGiornaliere = {};
+		data.forEach((item) => {
+			if (item.time) {
+				const dateObject =
+					item.time instanceof Date
+						? item.time
+						: new Date(parseInt(item.time as string, 10) * 1000);
+				const dataFormattata = format(dateObject, "yyyy-MM-dd", { locale: it });
 
-    useEffect(() => {	
-        const sommePerGiorno: SommeGiornaliere = {};
-        data.forEach(item => {
-            if (item.time) {
-                // Assicurati che item.time sia un oggetto Date prima di formattarlo
-                const dateObject = item.time instanceof Date ? item.time : new Date(parseInt(item.time as string, 10) * 1000);
-                const dataFormattata = format(dateObject, 'yyyy-MM-dd', { locale: it });
-
-				
-				const calorie = item.calories
-				const distanza = item.distance 
-				const passi = item.steps 
+				const calorie = item.calories;
+				const distanza = item.distance;
+				const passi = item.steps;
 
 				if (sommePerGiorno[dataFormattata]) {
 					sommePerGiorno[dataFormattata].calorie += calorie!;
 					sommePerGiorno[dataFormattata].distanza += distanza!;
 					sommePerGiorno[dataFormattata].passi += passi!;
 				} else {
-					sommePerGiorno[dataFormattata] = { calorie: calorie!, distanza: distanza!, passi: passi! };
+					sommePerGiorno[dataFormattata] = {
+						calorie: calorie!,
+						distanza: distanza!,
+						passi: passi!,
+					};
 				}
-			
-           
-            }
-        });
+			}
+		});
 
-        // Trasforma l'oggetto sommePerGiorno in un array per il grafico
-        const arrayPerGrafico: Grafico[] = Object.keys(sommePerGiorno).map(dataKey => ({
-            data: dataKey,
-            calorie: sommePerGiorno[dataKey].calorie,
-            distanza: sommePerGiorno[dataKey].distanza,
-            passi: sommePerGiorno[dataKey].passi,
-        }));
+		const arrayPerGrafico: Grafico[] = Object.keys(sommePerGiorno)
+			.sort() // ordina le date in ordine crescente
+			.map((dataKey) => ({
+				data: dataKey,
+				calorie: sommePerGiorno[dataKey].calorie,
+				distanza: sommePerGiorno[dataKey].distanza,
+				passi: sommePerGiorno[dataKey].passi,
+			}));
 
-        setSommeGiornaliereArray(arrayPerGrafico);
-    }, [data]); // Ricalcola quando 'data' cambia
+		setSommeGiornaliereArray(arrayPerGrafico);
+	}, [data]);
 
+	useEffect(() => {
+		if (!dataSelezionata || !visualizzazione) return;
 
-	useEffect( () => {
-		let filtered = [...sommeGiornaliereArray];
-		const formattedSelectedDate = format(dataSelezionata!, 'yyyy-MM-dd');
+		let filtered: Grafico[] = [];
+
 		switch (visualizzazione) {
-			case 'giorno':
-				filtered = filtered.filter(item => item.data === formattedSelectedDate);
+			case "giorno":
+				filtered = sommeGiornaliereArray.filter((item) =>
+					isSameDay(parseISO(item.data), dataSelezionata)
+				);
 				break;
-			case 'settimana':
-				
+			case "settimana":
+				filtered = sommeGiornaliereArray.filter((item) =>
+					isSameWeek(parseISO(item.data), dataSelezionata, { weekStartsOn: 1 })
+				);
 				break;
-			case 'mese':
-				
+			case "mese":
+				filtered = sommeGiornaliereArray.filter((item) =>
+					isSameMonth(parseISO(item.data), dataSelezionata)
+				);
 				break;
 			default:
-				break;
-			setDataFiltrata(filtered);
+				filtered = sommeGiornaliereArray;
 		}
-		
-	},[sommeGiornaliereArray, visualizzazione, dataSelezionata])
+		setDataFiltrata(filtered);
+	}, [sommeGiornaliereArray, visualizzazione, dataSelezionata]);
 
-	function handleDataChange(date: Date | null| undefined): void {
-		setDataSelezionata(date!);
+	function handleDataChange(date: Date | null | undefined): void {
+		if (date) setDataSelezionata(date);
 	}
 
-	
-	
-    return (
-		
-		<div>
+	return (
+		<>
 			<div className="flex justify-center mb-4">
-  				<div className="inline-flex bg-gray-100 rounded-full p-1 border border-gray-300">
-    				{["giorno", "settimana", "mese"].map((val) => (
-      				<button
-						key={val}
-						onClick={() => setVisualizazzione(val)}
-						className={ ` px-4 py-1.5 rounded-full text-sm font-medium transition-colors duration-200
-						${visualizzazione === val
-						? "bg-blue-600 text-white shadow"
-						: "text-blue-600 hover:bg-blue-100"} ` }
+				<div className="inline-flex bg-gray-100 rounded-full p-1 border border-gray-300">
+					{["giorno", "settimana", "mese"].map((val) => (
+						<button
+							key={val}
+							onClick={() => setVisualizazzione(val)}
+							className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors duration-200
+							${
+								visualizzazione === val
+									? "bg-blue-600 text-white shadow"
+									: "text-blue-600 hover:bg-blue-100"
+							}`}
 						>
-						{val === "giorno" ? "G" : val === "settimana" ? "S" : "M"}
-					</button>
+							{val === "giorno" ? "G" : val === "settimana" ? "S" : "M"}
+						</button>
 					))}
 				</div>
 			</div>
-			{/*<TimeBar/>*/}
-			<DatePicker 
-				//selected={selectedDate}
-				onChange={handleDataChange}
-				dateFormat="dd/MM/yyyy"
-				locale="it"
-				className="bg-black"
-			/>
 
+			<div className="flex justify-center mb-6">
+				<DatePicker
+					selected={dataSelezionata}
+					onChange={handleDataChange}
+					dateFormat="dd/MM/yyyy"
+					locale="it"
+					className="border px-3 py-1 rounded"
+				/>
+			</div>
 
-			<ResponsiveContainer width="100%" height={300}>
-                <BarChart
-                    data={dataFiltrata}
-                    margin={{
-                        top: 5,
-                        right: 30,
-                        left: 20,
-                        bottom: 5,
-                    }}
-                >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="data"/>
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="calorie" fill="#8884d8" name="Calorie" />
-                    <Bar dataKey="distanza" fill="#82ca9d" name="Distanza" />
-                    <Bar dataKey="passi" fill="#ffc658" name="Passi" />
-                </BarChart>
-            </ResponsiveContainer>
-		</div>
-
-    );
+			{dataFiltrata.length === 0 ? (
+				<p className="text-center text-gray-500">Nessun dato per la selezione attuale.</p>
+			) : (
+				<div>
+					<ResponsiveContainer width="100%" height={750}>
+						<BarChart
+							data={dataFiltrata}
+							margin={{ top: 20, right: 30, left: 20, bottom: 60 }} // Aumenta il margine inferiore per le date
+						>
+							<CartesianGrid strokeDasharray="3 3" />
+							<XAxis
+								dataKey="data"
+								tickFormatter={(tick) => format(parseISO(tick), "dd/MM", { locale: it })} // Formato data breve
+								textAnchor="end" // Allinea il testo
+							/>
+							<YAxis />
+							<Tooltip />
+							<Legend />
+							<Bar dataKey="calorie" fill="#8884d8" name="Calorie" />
+							<Bar dataKey="distanza" fill="#82ca9d" name="Distanza" />
+							<Bar dataKey="passi" fill="#ffc658" name="Passi" />
+						</BarChart>
+					</ResponsiveContainer>
+				</div>
+			)}
+		</>
+	);
 }
-
-
