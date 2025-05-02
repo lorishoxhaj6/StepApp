@@ -6,9 +6,9 @@ import StepsChart from "../components/StepsChart";
 
 export interface RowData {
   time?: Date;
-  steps?: number;
-  distance?: number;
-  calories?: number;
+  steps?: string;
+  distance?: string;
+  calories?: string;
 }
 
 function Dashboard() {

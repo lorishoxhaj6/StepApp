@@ -1,5 +1,4 @@
 import {
-	BarChart,
 	Bar,
 	XAxis,
 	YAxis,
@@ -7,6 +6,8 @@ import {
 	ResponsiveContainer,
 	CartesianGrid,
 	Legend,
+	ComposedChart,
+	ReferenceLine,
 } from "recharts";
 import { RowData } from "../cards/Dashboard";
 import { useEffect, useState } from "react";
@@ -39,26 +40,23 @@ export default function StepsChart({ data }: props) {
 	useEffect(() => {
 		const sommePerGiorno: SommeGiornaliere = {};
 		data.forEach((item) => {
-			if (item.time) {
-				const dateObject =
-					item.time instanceof Date
-						? item.time
-						: new Date(parseInt(item.time as string, 10) * 1000);
+			if (item.time && item.calories && item.distance && item.steps) {
+				const dateObject =item.time instanceof Date? item.time : new Date(parseInt(item.time as string, 10) * 1000);
 				const dataFormattata = format(dateObject, "yyyy-MM-dd", { locale: it });
 
-				const calorie = item.calories;
-				const distanza = item.distance;
-				const passi = item.steps;
+				const calorie = parseFloat(item.calories);
+				const distanza = parseFloat(item.distance);
+				const passi = parseFloat(item.steps);
 
 				if (sommePerGiorno[dataFormattata]) {
-					sommePerGiorno[dataFormattata].calorie += calorie!;
-					sommePerGiorno[dataFormattata].distanza += distanza!;
-					sommePerGiorno[dataFormattata].passi += passi!;
+					sommePerGiorno[dataFormattata].calorie += calorie;
+					sommePerGiorno[dataFormattata].distanza += distanza;
+					sommePerGiorno[dataFormattata].passi += passi;
 				} else {
 					sommePerGiorno[dataFormattata] = {
-						calorie: calorie!,
-						distanza: distanza!,
-						passi: passi!,
+						calorie: calorie,
+						distanza: distanza,
+						passi: passi
 					};
 				}
 			}
@@ -143,24 +141,33 @@ export default function StepsChart({ data }: props) {
 			) : (
 				<div>
 					<ResponsiveContainer width="100%" height={750}>
-						<BarChart
-							data={dataFiltrata}
-							margin={{ top: 20, right: 30, left: 20, bottom: 60 }} // Aumenta il margine inferiore per le date
-						>
-							<CartesianGrid strokeDasharray="3 3" />
-							<XAxis
-								dataKey="data"
-								tickFormatter={(tick) => format(parseISO(tick), "dd/MM", { locale: it })} // Formato data breve
-								textAnchor="end" // Allinea il testo
+                        <ComposedChart // Usa ComposedChart
+                            data={dataFiltrata}
+                            margin={{ top: 20, right: 30, left: 20, bottom: 60 }}
+                        >
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis
+                                dataKey="data"
+                                tickFormatter={(tick) => format(parseISO(tick), "dd/MM", { locale: it })}
+                                textAnchor="end"
+                            />
+                            <YAxis />
+                            <Tooltip />
+                            <Legend />
+                            <Bar dataKey="calorie" fill="#8884d8" name="Calorie" />
+                            <Bar dataKey="distanza" fill="#82ca9d" name="Distanza" />
+                            <Bar dataKey="passi" fill="#ffc658" name="Passi" />
+                            {localStorage.getItem("goal") && (
+                                <ReferenceLine
+								yAxisId={0} // Assicurati che corrisponda all'ID dell'asse Y dei passi
+								y={localStorage.getItem("goal")!}
+								stroke="#ffbb28"
+								strokeWidth={2}
+								label={{ value: 'Obiettivo', position: 'right', fill: '#ffbb28' }}
 							/>
-							<YAxis />
-							<Tooltip />
-							<Legend />
-							<Bar dataKey="calorie" fill="#8884d8" name="Calorie" />
-							<Bar dataKey="distanza" fill="#82ca9d" name="Distanza" />
-							<Bar dataKey="passi" fill="#ffc658" name="Passi" />
-						</BarChart>
-					</ResponsiveContainer>
+                            )}
+                        </ComposedChart>
+                    </ResponsiveContainer>
 				</div>
 			)}
 		</>
