@@ -225,7 +225,7 @@ export default function StepsChart({ data }: props) {
 				</p>
 			) : (
 				<div className="rounded-2xl p-4 overflow-hidden shadow-xl bg-white flex-col">
-					<ResponsiveContainer width="100%" height={500}>
+					<ResponsiveContainer width="100%" height={750}>
 						<ComposedChart
 							data={dataFiltrata}
 							margin={{ top: 20, right: 30, left: 20, bottom: 60 }}
