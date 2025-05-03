@@ -132,7 +132,7 @@ function Dashboard() {
         ) : (
           <div className="bg-white rounded-2xl shadow-sm p-6 text-center border border-gray-200 space-y-6">
             <p className="text-gray-800 text-lg">
-              Il tuo obiettivo per oggi :
+              Il tuo obiettivo di passi per oggi :
               <br />
               <span className="text-3xl font-semibold mt-2 block">{goal}</span>
             </p>
