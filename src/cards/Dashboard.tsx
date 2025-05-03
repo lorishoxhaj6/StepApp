@@ -13,14 +13,14 @@ export interface RowData {
 
 function Dashboard() {
   const [data, setData] = useState<RowData[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  //const [loading, setLoading] = useState<boolean>(true);
   const numberInputRef = useRef<HTMLInputElement>(null);
   const [isSelect, setSelect] = useState<boolean>(false);
   const [goal, setGoal] = useState<string | null>(localStorage.getItem("goal") || null);
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true);
+      //setLoading(true);
 
       try {
         const response = await axios.get('/data.csv', {
@@ -40,14 +40,14 @@ function Dashboard() {
                 }
             })
             setData(ordineDate(processData));
-            setLoading(false);
+            //setLoading(false);
           },
           error: () => {
-            setLoading(false);
+            //setLoading(false);
           },
         });
       } catch (e: any) {
-        setLoading(false);
+        //setLoading(false);
       }
     };
 

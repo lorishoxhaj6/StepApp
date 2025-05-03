@@ -17,6 +17,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import DistanzaGrafico from "./DistanzaGrafico";
 import CaloriesRingChart from "./CaloriesRing";
+import CustomAlert from "./customAlert";
 
 interface props {
 	data: RowData[];
@@ -91,6 +92,8 @@ export default function StepsChart({ data }: props) {
 	const [dataFiltrata, setDataFiltrata] = useState<Grafico[]>([]);
 	const [visualizzazione, setVisualizazzione] = useState<string>("mese");
 	const [dataSelezionata, setDataSelezionata] = useState<Date>(new Date());
+	const [showAlert, setShowAlert] = useState(false);
+
 
 	useEffect(() => {
 		const sommePerGiorno: SommeGiornaliere = {};
@@ -142,6 +145,7 @@ export default function StepsChart({ data }: props) {
 				filtered = sommeGiornaliereArray.filter((item) =>
 					isSameDay(parseISO(item.data), dataSelezionata)
 				);
+
 				break;
 			case "settimana":
 				filtered = sommeGiornaliereArray.filter((item) =>
@@ -157,7 +161,28 @@ export default function StepsChart({ data }: props) {
 				filtered = sommeGiornaliereArray;
 		}
 		setDataFiltrata(filtered);
+		
 	}, [sommeGiornaliereArray, visualizzazione, dataSelezionata]);
+
+
+	useEffect(() => {
+        if (
+			
+            visualizzazione === "giorno" &&
+            dataFiltrata.length > 0 &&
+            dataFiltrata[0]?.passi !== undefined &&
+            parseInt(localStorage.getItem("goal") || "0") > dataFiltrata[0].passi!
+        ) {	
+			setTimeout( () => {
+				setShowAlert(true);
+			},1000)
+			
+
+
+        } else {
+			setShowAlert(false);
+		}
+    }, [visualizzazione, dataFiltrata]);
 
 	function handleDataChange(date: Date | null | undefined): void {
 		if (date) setDataSelezionata(date);
@@ -268,7 +293,14 @@ export default function StepsChart({ data }: props) {
 						</div>
 					)}
 				</div>
-			)}
+			)}		
+			{showAlert  && <CustomAlert message={`Ti mancano ${
+                    parseInt(localStorage.getItem("goal") || "0") - dataFiltrata[0].passi!
+                } passi.`} onClose={ () => {
+					setShowAlert(false);
+				}
+					
+				}/>}	
 		</>
 	);
 }
