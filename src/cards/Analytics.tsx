@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Papa from "papaparse";
+import StoricoAttivita from "@/components/StoricoAttivita";
 
 
-interface RowData{
-  calories?:string,
-  distance?:string,
-  end_time?:string,
-  start_time?:string,
-  steps?:string,
-  type?:string
+interface attivitaProps{
+  calories:string,
+  distance:string,
+  end_time:string,
+  start_time:string,
+  steps:string,
+  type:string
 }
 
 function Analytics() {
-    const [data, setData] = useState<RowData[]>([]);
+    const [data, setData] = useState<attivitaProps[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
   
 
@@ -26,7 +27,7 @@ function Analytics() {
             responseType: 'text', // Indica ad Axios di trattare la risposta come testo
           });
   
-          Papa.parse<RowData>(response.data, {
+          Papa.parse<attivitaProps>(response.data, {
             header: true,
             worker: true,
             skipEmptyLines: true,
@@ -52,11 +53,10 @@ function Analytics() {
       return <div className="items-center font-bold text-3xl">Caricamento...</div>;
     }
 
-    console.log(data);
   return (
     <div className="flex-1 p-8 bg-gray-100">
       <h1 className="text-4xl font-bold text-gray-800">Analytics</h1>
-
+        <StoricoAttivita  historical_data={data} />
     </div>
   );
 }

@@ -103,7 +103,7 @@ function Dashboard() {
         ease: [0.4, 0, 0.2, 1],
       }}
     >
-      <div className="w-full max-w-sm">
+      <div className="w-xl max-w-sm">
         {!localStorage.getItem("goal") || isSelect ? (
           <form
             onSubmit={handlerSumit}

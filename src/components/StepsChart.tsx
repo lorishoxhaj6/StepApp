@@ -16,6 +16,7 @@ import { it } from "date-fns/locale";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import DistanzaGrafico from "./DistanzaGrafico";
+import CaloriesRingChart from "./CaloriesRing";
 
 interface props {
 	data: RowData[];
@@ -30,6 +31,17 @@ interface Grafico {
 	calorie: number;
 	distanza: number;
 	passi: number;
+}
+
+function calculateCurrentCalories(data: Grafico[]): number {
+	return data.reduce((acc,item) => acc + item.calorie,0);
+}
+
+function calculateCaloriesGoalFromSteps(goal: string | null, data: Grafico[]): number {
+	const goalSteps = parseInt(goal || "0", 10) * data.length;
+	const caloriePerStep = 0.04;
+
+	return goalSteps * caloriePerStep;
 }
 
 const CustomTooltip = ({ active, payload, label }: any) => {
@@ -178,7 +190,7 @@ export default function StepsChart({ data }: props) {
 					onChange={handleDataChange}
 					dateFormat="dd/MM/yyyy"
 					locale="it"
-					className="border px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-black"
+					className="border bg-white px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-black"
 				/>
 			</div>
 
@@ -187,8 +199,8 @@ export default function StepsChart({ data }: props) {
 					Nessun dato per la selezione attuale.
 				</p>
 			) : (
-				<div className="rounded-2xl overflow-hidden shadow-xl bg-white">
-					<ResponsiveContainer width="100%" height={750}>
+				<div className="rounded-2xl p-4 overflow-hidden shadow-xl bg-white flex-col">
+					<ResponsiveContainer width="100%" height={500}>
 						<ComposedChart
 							data={dataFiltrata}
 							margin={{ top: 20, right: 30, left: 20, bottom: 60 }}
@@ -247,8 +259,12 @@ export default function StepsChart({ data }: props) {
 						</ComposedChart>
 					</ResponsiveContainer>
 					{dataFiltrata.length > 0 && (
-						<div className="flex flex-col md:flex-row gap-4 mt-8">
-							<DistanzaGrafico data={dataFiltrata} />
+						<div className="flex items-center-safe">
+							<div className="flex-1/3 p-4 m-5 justify-items-center"><CaloriesRingChart
+								calories={calculateCurrentCalories(dataFiltrata)}
+								caloriesGoal={calculateCaloriesGoalFromSteps(localStorage.getItem("goal"),dataFiltrata)}
+							/></div>
+							<div className="flex-2/3 p-4 justify-items-center"><DistanzaGrafico data={dataFiltrata} /></div>
 						</div>
 					)}
 				</div>

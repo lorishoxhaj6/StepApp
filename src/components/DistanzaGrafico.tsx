@@ -13,8 +13,8 @@ const DistanzaGrafico = ({ data }: Props) => {
   }));
 
   return (
-    <div className="w-full md:w-1/2 p-4">
-      <div className="bg-white rounded-2xl shadow-xl p-6 text-center">
+   
+      <>
         <h2 className="text-lg font-semibold mb-4 text-gray-800">Distanza Percorsa</h2>
         <ResponsiveContainer width="100%" height={250}>
           <LineChart data={distanzaKm}>
@@ -44,8 +44,8 @@ const DistanzaGrafico = ({ data }: Props) => {
             />
           </LineChart>
         </ResponsiveContainer>
-      </div>
-    </div>
+   
+  </>
   );
 };
 
