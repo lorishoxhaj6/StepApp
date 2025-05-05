@@ -2,10 +2,10 @@
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import Navbar from './components/Navbar'
-import Analytics from './cards/Analytics'
-import TrainingCards from "./cards/TrainingCards"
-import Contacts from "./cards/Contacts"
-import Dashboard from './cards/Dashboard'
+import Analytics from './pages/Analytics'
+import TrainingCards from "./pages/TrainingCards"
+import Contacts from "./pages/Contacts"
+import Dashboard from './pages/Dashboard'
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router"
 import { AnimatePresence } from 'framer-motion'
 import AnimatedPage from './components/AnimatedPage'
