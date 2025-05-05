@@ -56,8 +56,9 @@ StepApp/
   ```bash
    cd StepApp
    npm install
+  ```
 4. Lancia il programma 
     ```bash
    npm run dev
-  ```
+  
 5. Apri nel browser il seguente [link](http://localhost:5173/)
