@@ -59,6 +59,6 @@ StepApp/
   ```
 4. Lancia il programma 
     ```bash
-   npm run dev
+    npm run dev
   
 5. Apri nel browser il seguente [link](http://localhost:5173/)
