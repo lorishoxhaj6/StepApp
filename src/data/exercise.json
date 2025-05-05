@@ -77,7 +77,7 @@
     },
     "avanzato": {
       "cardio": [
-        { "esercizio": "Corsa ad Intervalli (HIIT)", "serie": 5, "ripetizioni": 40, "recupero": 20 },
+        { "esercizio": "Corsa ad Intervalli (HIIT)", "serie": 1, "ripetizioni": 20, "recupero": 20 },
         { "esercizio": "Mountain Climbers", "serie": 3, "ripetizioni": 1, "recupero": 30 },
         { "esercizio": "Jumping Jacks Veloce", "serie": 3, "ripetizioni": 1, "recupero": 30 },
         { "esercizio": "Spinning (alta intensità)", "serie": 1, "ripetizioni": 30, "recupero": 0 }
