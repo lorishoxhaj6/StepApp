@@ -1,9 +1,7 @@
 # Step Hero
-
 ### Componenti
 - Mattia Danese (VR502999)
 - Loris Hoxhaj (VR500402)
-<hr style="border-top: 1px">
 ### Obiettivi
 L'obiettivo principale di questa applicazione è quello di monitorare i passi giornalieri regsitrati da un utente , e in base a questi dati e all'obiettivo di passi giornaliero inserito  dall'utente mostra l'andatamento  tramite dei  grafici giornalieri, settimali e mensili.
 Inoltre l'app ha un altro obiettivo, ovvero la generazione di schede personalizzate in base al livello e al gruppo muscolare scelto dall'utente.
