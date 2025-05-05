@@ -52,4 +52,12 @@ StepApp/
 ## Passi per l'avvio del progetto
 1. Prima di tutto installare NODE.js nel proprio computer, per installarlo seguire il seguente [link](https://nodejs.org/en/download)
 2. Clonare la seguente repository
-3. 
+3. Entra nella directory del progetto e installa le dipendenze necessarie
+  ```bash
+   cd StepApp
+   npm install```
+4. Lancia il programma 
+    ```bash
+   npm run dev
+  ```
+5. Apri nel browser il seguente [link](http://localhost:5173/)
