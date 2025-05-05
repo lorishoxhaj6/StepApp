@@ -1,59 +1,64 @@
-# React + TypeScript + Vite
+# Step Hero
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Componenti
+- Mattia Danese (VR502999)
+- Loris Hoxhaj (VR500402)
 
-Currently, two official plugins are available:
+## Obiettivi
+L'obiettivo principale di questa applicazione è quello di monitorare i passi giornalieri regsitrati da un utente , e in base a questi dati e all'obiettivo di passi giornaliero inserito  dall'utente mostra l'andatamento  tramite dei  grafici giornalieri, settimali e mensili.
+Inoltre l'app ha un altro obiettivo, ovvero la generazione di schede personalizzate in base al livello e al gruppo muscolare scelto dall'utente.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Limiti attuali
+I limiti dell'applicazione è il fatto di prelevare i dati tramite file.csv(per i passi, distanza in km, calorie) e tramite un file.json per gli esercizi e non attraverso un database, e che l'applicazione è per un utente unico in quanto non ci sono sessioni utenti.
 
-## Expanding the ESLint configuration
+## Scelte progettuali
+- Il livello per la generazioni della schede lo sceglie l'utente e non viene calcolato in base ai dati delle sue performance
+- Le notifiche compaiono per ricordare il raggiungimento dell'obbiettivo solo per quanto riguarda i passi mancanti e giornalmente
+- Si può scegliere solo un livello e solo un gruppo muscolare  alla volta per la generazione delle schede.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Struttura del progetto
+StepApp/
+- public/ : Cartella dove vengono inseriti file statici accessibili direttamente dal browser.
+- src/ : Directory principale contenente il codice sorgente dell'applicazione.
+  - components/ : Cartella per i componenti riutilizzabili dell'interfaccia utente React.
+  - data/ : Cartella dove è presente il file statico degli esercizi.
+  - img/ : Cartella per le immagini e altri asset grafici.
+  - lib/ : Directory per librerie o utility personalizzate.
+  - pages/ : Cartella per i componenti React che rappresentano le diverse "pagine" o sezioni dell'applicazione.
+  - index.css : File CSS globale per stili di base o importazioni.
+  - main.tsx : Punto di ingresso principale dell'applicazione React con TypeScript.t.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Pagine dell' applicazione
+- **/** : (Dashboard.tsx) pagina principale dove viene mostrato un campo per la scelta dell'obiettivo giornaliero di passi e i grafici
+- **/training-cards** : (TrainingCards.tsx) pagina dove in base alle scelte dell'utente viene generata una scheda personalizzata in formato .pdf
+- **/analytics** : (Analytics.tsx) pagina dove vengono mostrate tutte le attività dell'utente
+- **/contact-us** : (Contacts.tsx) pagina dove ci sono le nostre informazioni
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Tecnologie utilizzate
+- **Vite** : tool di sviluppo front-end per ridurre i tempi di compilazione
+- **React e Typescript** : linguaggi di programmazione per lo sviluppo delle interfacce
+- **Tailwind CSS** : framework CSS per stilizzare le interfacce in modo rapido
+- **Papaparse** : libreria javascript per il parsing di file.csv
+- **recharts** : libreria react per costruire grafici
+- **react-router**: librearia react per il routing(ovvero gestire la navigazione tra le pagine dell'applicazione)
+- **ESLint con globals** : strumento per l'analisi statica del codice js/ts , serve per individuare errori sintattici nel codici
+- **axios** : libreria per richieste HTTP, noi l'abbiamo utilizzato per leggere i file.csv
+- **jspdf** : libreria per generare file.pdf
+- **react-datapicker** : componente di calendario e selettore 
+- **framer-motion e motion** : librerie per creare animazioni e transizioni
+- **date-fns** : libreria per la manipolazione e formattazione delle date
+- **lucide-react** : libreria di icone fornite come componenti React
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-/*install framer-motion
-  install recharts
-  install papaparse -> per importare file csv (excel)
-  yseFetch.tsx -> npm i --save-dev @types/papaparse
-  */
-```
+## Passi per l'avvio del progetto
+1. Prima di tutto installare NODE.js nel proprio computer, per installarlo seguire il seguente [link](https://nodejs.org/en/download)
+2. Clonare la seguente repository
+3. Entra nella directory del progetto e installa le dipendenze necessarie
+  ```bash
+   cd StepApp
+   npm install
+  ```
+4. Lancia il programma 
+  ```bash
+   npm run dev
+  ```
+5. Apri nel browser il seguente [link](http://localhost:5173/)

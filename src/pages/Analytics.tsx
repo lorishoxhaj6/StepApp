@@ -33,7 +33,6 @@ function Analytics() {
             skipEmptyLines: true,
             complete: (results) => {
               setData(results.data);
-              console.log(results.data);
               setLoading(false);
             },
             error: () => {

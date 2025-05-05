@@ -9,7 +9,7 @@ import {
 	ComposedChart,
 	ReferenceLine,
 } from "recharts";
-import { RowData } from "../cards/Dashboard";
+import { RowData } from "../pages/Dashboard";
 import { useEffect, useState } from "react";
 import { format, isSameDay, isSameWeek, isSameMonth, parseISO } from "date-fns";
 import { it } from "date-fns/locale";

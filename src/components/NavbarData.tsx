@@ -1,4 +1,3 @@
-//import React from "react";
 import workout from "../img/workout.png";
 import contacts from "../img/contact-us.png";
 import analtyics from "../img/pie-chart.png";
