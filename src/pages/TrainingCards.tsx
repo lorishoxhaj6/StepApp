@@ -8,6 +8,7 @@ import gambe from "../img/gambe.jpg"
 import bicipite from "../img/bicipiti.jpg"
 import spalle from "../img/spalle.jpg"
 import petto from "../img/petto.jpg"
+import corsa from "../img/CorsaPersona.jpg"
 import jsPDF from "jspdf";
 import datiAllenamento from "../data/exercise.json";
 
@@ -16,6 +17,7 @@ type Esercizio = {
   esercizio: string;
   serie: number;
   ripetizioni: number;
+  recupero : number
 };
 
 type ZonaMuscolare = {
@@ -82,14 +84,18 @@ function Schede() {
     doc.text("Esercizi", 15, 60);
 
     let y = 70; // Posizione iniziale verticale
-    exercise.forEach((esercizio: { esercizio: string; serie: number; ripetizioni: number }) => {
+    exercise.forEach((esercizio: { esercizio: string; serie: number; ripetizioni: number; recupero : number}) => {
       doc.setFontSize(12);
 
       // Nome dell'esercizio
       doc.text(`${esercizio.esercizio}`, 15, y);
 
       // Dettagli (serie e ripetizioni) a destra
-      const details = `${esercizio.serie} serie x ${esercizio.ripetizioni} ripetizioni`;
+      let details = ""
+      if(selectedZone === 'cardio')
+        details = `${esercizio.serie} serie x ${esercizio.ripetizioni} minuti con ${esercizio.recupero} secondi di recupero` ;
+      else 
+        details = `${esercizio.serie} serie x ${esercizio.ripetizioni} ripetizioni con ${esercizio.recupero} secondi di recupero` ;
       doc.text(details, pageWidth - 15, y, { align: "right" });
 
       y += 10; // Spazio tra gli esercizi
@@ -162,6 +168,12 @@ function Schede() {
           title1="Braccia"
           isSelected={selectedZone === "braccia"}
           onClick={() => handleZoneSelect("braccia")}
+        />
+        <Card
+          icon={<img src={corsa} alt="corsa" loading="lazy"/>}
+          title1="Cardio"
+          isSelected={selectedZone === "cardio"}
+          onClick={() => handleZoneSelect("cardio")}
         />
       </div>
 
