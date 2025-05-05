@@ -18,15 +18,15 @@ I limiti dell'applicazione è il fatto di prelevare i dati tramite file.csv(per 
 
 ## Struttura del progetto
 StepApp/
-- public/ -> Cartella dove vengono inseriti file statici accessibili direttamente dal browser.
-- src/ -> Directory principale contenente il codice sorgente dell'applicazione.
-  - components/ -> Cartella per i componenti riutilizzabili dell'interfaccia utente React.
-  - data/ -> Cartella dove è presente il file statico degli esercizi.
-  - img/ -> Cartella per le immagini e altri asset grafici.
-  - lib/ -> Directory per librerie o utility personalizzate.
-  - pages/ -> Cartella per i componenti React che rappresentano le diverse "pagine" o sezioni dell'applicazione.
-  - index.css -> File CSS globale per stili di base o importazioni.
-  - main.tsx -> Punto di ingresso principale dell'applicazione React con TypeScript.t.
+- public/ : Cartella dove vengono inseriti file statici accessibili direttamente dal browser.
+- src/ : Directory principale contenente il codice sorgente dell'applicazione.
+  - components/ : Cartella per i componenti riutilizzabili dell'interfaccia utente React.
+  - data/ : Cartella dove è presente il file statico degli esercizi.
+  - img/ : Cartella per le immagini e altri asset grafici.
+  - lib/ : Directory per librerie o utility personalizzate.
+  - pages/ : Cartella per i componenti React che rappresentano le diverse "pagine" o sezioni dell'applicazione.
+  - index.css : File CSS globale per stili di base o importazioni.
+  - main.tsx : Punto di ingresso principale dell'applicazione React con TypeScript.t.
 
 ## Pagine dell' applicazione
 - **/** : (Dashboard.tsx) pagina principale dove viene mostrato un campo per la scelta dell'obiettivo giornaliero di passi e i grafici
@@ -49,5 +49,7 @@ StepApp/
 - **date-fns** : libreria per la manipolazione e formattazione delle date
 - **lucide-react** : libreria di icone fornite come componenti React
 
-
-
+## Passi per l'avvio del progetto
+1. Prima di tutto installare NODE.js nel proprio computer, per installarlo seguire il seguente [link](https://nodejs.org/en/download)
+2. Clonare la seguente repository
+3. 
