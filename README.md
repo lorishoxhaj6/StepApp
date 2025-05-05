@@ -55,7 +55,7 @@ StepApp/
 3. Entra nella directory del progetto e installa le dipendenze necessarie
   ```bash
    cd StepApp
-   npm install```
+   npm install
 4. Lancia il programma 
     ```bash
    npm run dev
