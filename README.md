@@ -26,7 +26,7 @@ StepApp/
   - lib/ -> Directory per librerie o utility personalizzate.
   - pages/ -> Cartella per i componenti React che rappresentano le diverse "pagine" o sezioni dell'applicazione.
   - index.css -> File CSS globale per stili di base o importazioni.
-  - main.tsx -> Punto di ingresso principale dell'applicazione React con TypeScript.
+  - main.tsx -> Punto di ingresso principale dell'applicazione React con TypeScript.t.
 
 ## Pagine dell' applicazione
 - **/** : (Dashboard.tsx) pagina principale dove viene mostrato un campo per la scelta dell'obiettivo giornaliero di passi e i grafici
