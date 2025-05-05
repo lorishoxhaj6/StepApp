@@ -1,5 +1,5 @@
 # Step Hero
-
+---
 ### Componenti
 - Mattia Danese (VR502999)
 - Loris Hoxhaj (VR500402)
@@ -21,22 +21,21 @@ I limiti dell'applicazione è il fatto di prelevare i dati tramite file.csv(per 
 
 ### Struttura del progetto
 StepApp/
-- public/             -> Cartella dove vengono inseriti file statici  accessibili direttamente dal browser.
-- src/                -> Directory principale contenente il codice sorgente dell'applicazione.
-    - components/     -> Cartella per i componenti riutilizzabili dell'interfaccia utente React.
-    - data/           -> Cartella dove è presente il file statico degli esercizi.
-    - img/            -> Cartella per le immagini e altri asset grafici.
-    - lib/            -> Directory per librerie o utility personalizzate.
-    - pages/          -> Cartella per i componenti React che rappresentano le diverse "pagine" o sezioni dell'applicazione.
-    - index.css       -> File CSS globale per stili di base o importazioni.
-    - main.tsx        -> Punto di ingresso principale dell'applicazione React con TypeScript.
-
+- public/ -> Cartella dove vengono inseriti file statici accessibili direttamente dal browser.
+- src/ -> Directory principale contenente il codice sorgente dell'applicazione.
+  - components/ -> Cartella per i componenti riutilizzabili dell'interfaccia utente React.
+  - data/ -> Cartella dove è presente il file statico degli esercizi.
+  - img/ -> Cartella per le immagini e altri asset grafici.
+  - lib/ -> Directory per librerie o utility personalizzate.
+  - pages/ -> Cartella per i componenti React che rappresentano le diverse "pagine" o sezioni dell'applicazione.
+  - index.css -> File CSS globale per stili di base o importazioni.
+  - main.tsx -> Punto di ingresso principale dell'applicazione React con TypeScript.
 
 ### Pagine dell' applicazione
 - **/** : (Dashboard.tsx) pagina principale dove viene mostrato un campo per la scelta dell'obiettivo giornaliero di passi e i grafici
 - **/training-cards** : (TrainingCards.tsx) pagina dove in base alle scelte dell'utente viene generata una scheda personalizzata in formato .pdf
 - **/analytics** : (Analytics.tsx) pagina dove vengono mostrate tutte le attività dell'utente
-- **contact-us** : (Contacts.tsx) pagina dove ci sono le nostre informazioni
+- **/contact-us** : (Contacts.tsx) pagina dove ci sono le nostre informazioni
 
 ### Tecnologie utilizzate
 - **Vite** : tool di sviluppo front-end per ridurre i tempi di compilazione
