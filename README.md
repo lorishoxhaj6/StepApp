@@ -10,11 +10,12 @@ Inoltre l'app ha un altro obiettivo, ovvero la generazione di schede personalizz
 
 
 ### Limiti attuali
-I limiti dell'applicazione è il fatto di prelevare i dati tramite file.csv(per i passi ecc) e tramite un file.json(per gli esercizi) e non attraverso un database, e che l'applicazione è per un utente unico in quanto non ci sono sessioni utenti.
+I limiti dell'applicazione è il fatto di prelevare i dati tramite file.csv(per i passi, distanza in km, calorie) e tramite un file.json per gli esercizi e non attraverso un database, e che l'applicazione è per un utente unico in quanto non ci sono sessioni utenti.
 
 
 ### Scelte progettuali
 - Il livello per la generazioni della schede lo sceglie l'utente e non viene calcolato in base ai dati delle sue performance
+- Le notifiche compaiono per ricordare il raggiungimento dell'obbiettivo solo per quanto riguarda i passi mancanti e giornalmente
 - Si può scegliere solo un livello e solo un gruppo muscolare  alla volta per la generazione delle schede.
 
 
