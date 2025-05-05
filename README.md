@@ -1,24 +1,24 @@
 # Step Hero
 
-## Componenti
+### Componenti
 - Mattia Danese (VR502999)
 - Loris Hoxhaj (VR500402)
 
-## Obiettivi
+### Obiettivi
 L'obiettivo principale di questa applicazione è quello di monitorare i passi giornalieri regsitrati da un utente , e in base a questi dati e all'obiettivo di passi giornaliero inserito  dall'utente mostra l'andatamento  tramite dei  grafici giornalieri, settimali e mensili.
 Inoltre l'app ha un altro obiettivo, ovvero la generazione di schede personalizzate in base al livello e al gruppo muscolare scelto dall'utente.
 
 
-## Limiti attuali
+### Limiti attuali
 I limiti dell'applicazione è il fatto di prelevare i dati tramite file.csv(per i passi ecc) e tramite un file.json(per gli esercizi) e non attraverso un database, e che l'applicazione è per un utente unico in quanto non ci sono sessioni utenti.
 
 
-## Scelte progettuali
+### Scelte progettuali
 - Il livello per la generazioni della schede lo sceglie l'utente e non viene calcolato in base ai dati delle sue performance
 - Si può scegliere solo un livello e solo un gruppo muscolare  alla volta per la generazione delle schede.
 
 
-## Struttura del progetto
+### Struttura del progetto
 StepApp/
 - public/             -> Cartella dove vengono inseriti file statici  accessibili direttamente dal browser.
 - src/                -> Directory principale contenente il codice sorgente dell'applicazione.
@@ -31,13 +31,13 @@ StepApp/
     - main.tsx        -> Punto di ingresso principale dell'applicazione React con TypeScript.
 
 
-## Pagine dell' applicazione
+### Pagine dell' applicazione
 - **/** : (Dashboard.tsx) pagina principale dove viene mostrato un campo per la scelta dell'obiettivo giornaliero di passi e i grafici
 - **/training-cards** : (TrainingCards.tsx) pagina dove in base alle scelte dell'utente viene generata una scheda personalizzata in formato .pdf
 - **/analytics** : (Analytics.tsx) pagina dove vengono mostrate tutte le attività dell'utente
 - **contact-us** : (Contacts.tsx) pagina dove ci sono le nostre informazioni
 
-## Tecnologie utilizzate
+### Tecnologie utilizzate
 - **Vite** : tool di sviluppo front-end per ridurre i tempi di compilazione
 - **React e Typescript** : linguaggi di programmazione per lo sviluppo delle interfacce
 - **Tailwind CSS** : framework CSS per stilizzare le interfacce in modo rapido
